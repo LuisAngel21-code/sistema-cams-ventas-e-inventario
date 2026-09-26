@@ -20,12 +20,10 @@ Route::post('/recuperar', [AuthController::class, 'enviarEnlaceRecuperacion']);
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'cerrarSesion'])->name('logout');
 
-    // HU-12: Dashboard general - solo Administrador y Jefe
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->middleware('role:administrador,jefe')
         ->name('dashboard');
 
-    // HU-04/05/06/07/08: Productos, inventario y movimientos - Encargado de Almacen + Admin/Jefe
     Route::middleware('role:encargado_almacen,administrador,jefe')->group(function () {
         Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
         Route::get('/productos/crear', [ProductoController::class, 'create'])->name('productos.create');
@@ -40,7 +38,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/inventario/ingreso', [InventarioController::class, 'registrarIngreso']);
     });
 
-    // HU-09/10: Ventas - Encargado de Tienda + Admin/Jefe
     Route::middleware('role:encargado_tienda,administrador,jefe')->group(function () {
         Route::get('/ventas/nueva', [VentaController::class, 'create'])->name('ventas.create');
         Route::post('/ventas', [VentaController::class, 'store'])->name('ventas.store');
@@ -48,7 +45,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/ventas/{venta}', [VentaController::class, 'detalle'])->name('ventas.detalle');
     });
 
-    // HU-11/12: Reportes y dashboard - Administrador y Jefe
     Route::middleware('role:administrador,jefe')->group(function () {
         Route::get('/reportes', [ReporteController::class, 'index'])->name('reportes.index');
     });

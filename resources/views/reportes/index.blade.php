@@ -10,7 +10,6 @@
         </div>
     </div>
 
-    <!-- Filtro de rango de fechas HU-11 CA-03 -->
     <form class="flex gap-2 mb-6 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
         <input type="date" name="fecha_inicio" value="{{ $fechaInicio }}" class="px-3 py-2 rounded-lg border border-slate-300 text-sm focus:border-[#1e3a5f] outline-none">
         <input type="date" name="fecha_fin" value="{{ $fechaFin }}" class="px-3 py-2 rounded-lg border border-slate-300 text-sm focus:border-[#1e3a5f] outline-none">

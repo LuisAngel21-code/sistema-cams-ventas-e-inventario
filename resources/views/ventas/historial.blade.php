@@ -11,7 +11,6 @@
         <a href="{{ route('ventas.create') }}" class="px-4 py-2.5 rounded-lg bg-[#1e3a5f] text-white text-sm font-medium hover:bg-[#16304f] transition-colors">+ Nueva venta</a>
     </div>
 
-    <!-- Filtro por fecha HU-10 CA-03 -->
     <form class="flex gap-2 mb-6">
         <input type="date" name="fecha_inicio" value="{{ request('fecha_inicio') }}" class="px-3 py-2 rounded-lg border border-slate-300 text-sm focus:border-[#1e3a5f] outline-none">
         <input type="date" name="fecha_fin" value="{{ request('fecha_fin') }}" class="px-3 py-2 rounded-lg border border-slate-300 text-sm focus:border-[#1e3a5f] outline-none">
