@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stock extends Model
 {
+    // HU-05: guarda cuánto hay de cada producto en cada sucursal.
     protected $table = 'stock';
 
     public $timestamps = false;

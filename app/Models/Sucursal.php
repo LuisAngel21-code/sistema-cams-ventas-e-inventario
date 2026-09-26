@@ -21,6 +21,7 @@ class Sucursal extends Model
         'activo' => 'boolean',
     ];
 
+    // HU-13: cada sucursal agrupa a sus usuarios para organizar las tiendas.
     public function usuarios()
     {
         return $this->hasMany(Usuario::class);

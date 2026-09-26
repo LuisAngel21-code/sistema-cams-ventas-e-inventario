@@ -45,6 +45,7 @@ class Producto extends Model
 
     public function actualizarStock(int $cantidadNueva): void
     {
+        // HU-05: guarda la nueva cantidad para que se vea en el inventario.
         $this->stock = $cantidadNueva;
         $this->save();
     }

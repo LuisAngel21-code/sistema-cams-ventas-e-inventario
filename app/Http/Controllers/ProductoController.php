@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
+    // HU-04: muestra el catálogo con los productos registrados.
     public function index(Request $request)
     {
         $productos = Producto::query()
@@ -28,6 +29,7 @@ class ProductoController extends Controller
 
     public function store(Request $request)
     {
+        // HU-04: se piden los datos obligatorios del producto antes de guardarlo.
         $datos = $request->validate([
             'codigo' => ['required', 'string', 'max:50', 'unique:productos,codigo'],
             'nombre' => ['required', 'string', 'max:100'],
@@ -75,10 +77,12 @@ class ProductoController extends Controller
 
     public function actualizarStock(Request $request, Producto $producto)
     {
+        // HU-05: la cantidad debe ser un número válido mayor o igual a cero.
         $datos = $request->validate([
             'stock' => ['required', 'integer', 'min:0'],
         ]);
 
+        // HU-05: al guardar, el nuevo valor ya se ve en el inventario.
         $producto->actualizarStock($datos['stock']);
 
         return redirect()->route('productos.index')

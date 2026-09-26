@@ -25,6 +25,7 @@ class RecoveryToken extends Model
 
     public static function generarPara(Usuario $usuario, int $minutosValidez = 30): self
     {
+        // HU-02: crea el enlace de recuperación que dura 30 minutos.
         return static::create([
             'usuario_id' => $usuario->id,
             'token' => Str::random(60),

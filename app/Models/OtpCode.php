@@ -34,6 +34,7 @@ class OtpCode extends Model
 
     public function esValido(string $codigoIngresado): bool
     {
+        // HU-03: el código sirve una sola vez y solo si aún no venció.
         return $this->codigo === $codigoIngresado
             && !$this->verificado
             && $this->expira_en->isFuture();

@@ -47,6 +47,7 @@ class Usuario extends Authenticatable
 
     public function verificarCredenciales($passwordIngresada)
     {
+        // HU-01: compara lo que escribió la persona con la clave guardada de forma segura.
         return Hash::check($passwordIngresada, $this->password_hash);
     }
 
